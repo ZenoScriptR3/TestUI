@@ -196,7 +196,7 @@ loadStatus.Font=Enum.Font.Gotham; loadStatus.ZIndex=101; loadStatus.Parent=loadS
 -- Animate loading bar + status messages then fade out
 task.spawn(function()
     local steps = {
-        { pct=0.15, msg="Loading modules...",   t=0.18 },
+        { pct=0.15, msg="Loading KYZENO X HUB...",   t=0.18 },
         { pct=0.35, msg="Building UI...",        t=0.18 },
         { pct=0.55, msg="Applying theme...",     t=0.18 },
         { pct=0.75, msg="Hooking services...",   t=0.18 },
@@ -206,9 +206,9 @@ task.spawn(function()
     for _,step in ipairs(steps) do
         TweenService:Create(barFill, TweenInfo.new(step.t, Enum.EasingStyle.Quad), {Size=UDim2.new(step.pct,0,1,0)}):Play()
         loadStatus.Text = step.msg
-        task.wait(step.t + 0.05)
+        task.wait(step.t + 0.5)
     end
-    task.wait(0.4)
+    task.wait(3)
     local targets = {loadScreen, loadLogo, loadTitle, loadSub, loadCredit, barBg, loadStatus}
     local tweens = {}
     for _,obj in ipairs(targets) do
@@ -220,7 +220,7 @@ task.spawn(function()
     end
     TweenService:Create(barFill, TweenInfo.new(0.5, Enum.EasingStyle.Quad), {BackgroundTransparency=1}):Play()
     TweenService:Create(loadScreen, TweenInfo.new(0.5, Enum.EasingStyle.Quad), {BackgroundTransparency=1}):Play()
-    task.wait(0.55)
+    task.wait(3)
     loadScreen:Destroy()
 end)
 
@@ -266,13 +266,13 @@ logoImg.Image="rbxassetid://106158447709741"; logoImg.Parent=header
 
 local titleLbl=Instance.new("TextLabel"); titleLbl.Size=UDim2.new(0,280,0,30)
 titleLbl.Position=UDim2.new(0,75,0,8); titleLbl.BackgroundTransparency=1
-titleLbl.Text="|KYZENO X PANEL|"; titleLbl.TextColor3=C_WHITE
+titleLbl.Text="☄️|KYZENO X PANEL|☄️"; titleLbl.TextColor3=C_WHITE
 titleLbl.TextSize=20; titleLbl.Font=Enum.Font.GothamBlack
 titleLbl.TextXAlignment=Enum.TextXAlignment.Left; titleLbl.Parent=header
 
 local subLbl=Instance.new("TextLabel"); subLbl.Size=UDim2.new(0,120,0,15)
 subLbl.Position=UDim2.new(0,75,0,38); subLbl.BackgroundTransparency=1
-subLbl.Text="VER. 3.0 | FIXED"; subLbl.TextColor3=C_RED
+subLbl.Text="VER. 3.0 | FIXED TEST EDITION☄️"; subLbl.TextColor3=C_RED
 subLbl.TextSize=11; subLbl.Font=Enum.Font.GothamBold
 subLbl.TextXAlignment=Enum.TextXAlignment.Left; subLbl.Parent=header
 
@@ -330,7 +330,7 @@ sbLine.BorderSizePixel=0; sbLine.Parent=sidebar
 
 local sbCredits=Instance.new("TextLabel"); sbCredits.Size=UDim2.new(1,-20,0,160)
 sbCredits.Position=UDim2.new(0,10,0,60); sbCredits.BackgroundTransparency=1
-sbCredits.Text="Design: Me & Claude\nBy: Zeno\nCo-pilot: Claude 4.6\n\nVersion: Fixed Edition"
+sbCredits.Text="Design: Me & Who☄️\nBy: ZenoScriptR3 ☄️\nCo-pilot: Claude 4.6 & Deepseek R3\n\nVersion: Fixed Test Edition"
 sbCredits.TextColor3=C_GRAY; sbCredits.TextSize=12; sbCredits.Font=Enum.Font.Gotham
 sbCredits.TextXAlignment=Enum.TextXAlignment.Left; sbCredits.TextWrapped=true
 sbCredits.LineHeight=1.8; sbCredits.Parent=sidebar
@@ -549,7 +549,7 @@ end
 sectionFunctions["SETTINGS"]=function()
     createSectionTitle("SETTINGS")
     createToggle("Night Mode","nightMode",function(on)
-        if on then originalBrightness=Lighting.Brightness; Lighting.Brightness=0.5; Lighting.Ambient=Color3.fromRGB(50,50,50)
+        if on then originalBrightness=Lighting.Brightness; Lighting.Brightness=0.2; Lighting.Ambient=Color3.fromRGB(50,50,50)
         else Lighting.Brightness=originalBrightness; Lighting.Ambient=Color3.fromRGB(128,128,128) end
     end)
     createToggle("Remove Texture","removeTexture",function(on)
@@ -1024,12 +1024,12 @@ end
 -- ============================================================
 sectionFunctions["OTHERS"]=function()
     createSectionTitle("OTHERS")
-    createInfoLabel("Design: Me & Claude")
-    createInfoLabel("By: Zeno")
-    createInfoLabel("Co-pilot: Claude 4.6")
+    createInfoLabel("Design: Me & Who")
+    createInfoLabel("By: ZenoScriptR3 or ZenoR3")
+    createInfoLabel("Co-pilot: Claude 4.6 & Deepseek R3")
     createInfoLabel("Version: Fixed Edition")
     createInfoLabel("")
-    createInfoLabel("All features working except cloud saves")
+    createInfoLabel("All features working except cloud saves so we have to remove it")
     createInfoLabel("(Remote functions not found in game)")
 end
 
